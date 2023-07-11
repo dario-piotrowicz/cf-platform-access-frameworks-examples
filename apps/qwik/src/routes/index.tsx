@@ -1,14 +1,44 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 
 import Counter from '~/components/starter/counter/counter';
 import Hero from '~/components/starter/hero/hero';
 import Infobox from '~/components/starter/infobox/infobox';
 import Starter from '~/components/starter/next-steps/next-steps';
 
+export const useDataLoader = routeLoader$(
+  async ({ request, platform }) => {
+    const myKv = platform.env.MY_KV;
+    const waitUntil = platform.ctx.waitUntil;
+    // Note: both requests are the same (and the cf is also the same)
+    const loaderRequestCf = request.cf;
+    const contextRequestCf = platform.request.cf;
+    const allItems = await myKv.list();
+
+    const result = {
+      allItems,
+      loaderRequestCf,
+      contextRequestCf,
+      typeOfWaitUntil: typeof waitUntil
+    };
+
+    return JSON.stringify(result);
+  }
+);
+
 export default component$(() => {
+  const data = useDataLoader();
+
+  useVisibleTask$(() => {
+    console.log(data);
+  });
+
   return (
     <>
+      <p>
+        {data}
+      </p>
+
       <Hero />
       <Starter />
 

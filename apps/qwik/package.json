@@ -21,7 +21,7 @@
     "serve": "wrangler pages dev ./dist",
     "start": "vite --open --mode ssr",
     "qwik": "qwik",
-    "pages:dev": "wrangler pages dev --compatibility-date=2023-07-11 -- npm run dev",
+    "pages:dev": "wrangler pages dev ./dist --compatibility-date=2023-07-11 --kv MY_KV",
     "pages:deploy": "npm run build && npm run deploy"
   },
   "devDependencies": {
