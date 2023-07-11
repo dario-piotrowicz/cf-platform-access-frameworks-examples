@@ -2,5 +2,8 @@
   "name": "cf-platform-access-frameworks-examples",
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230710.0"
+  }
 }
