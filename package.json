@@ -1,0 +1,6 @@
+{
+  "name": "cf-platform-access-frameworks-examples",
+  "workspaces": [
+    "apps/*"
+  ]
+}
