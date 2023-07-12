@@ -7,10 +7,11 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "pages:dev": "wrangler pages dev --compatibility-date=2023-07-12 --proxy 5173 -- npm run dev",
+    "pages:dev": "wrangler pages dev .svelte-kit/cloudflare --compatibility-date=2023-07-12 --kv MY_KV",
     "pages:deploy": "NODE_VERSION=16 npm run build && wrangler pages deploy .svelte-kit/cloudflare"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20230710.0",
     "@fontsource/fira-mono": "^4.5.10",
     "@neoconfetti/svelte": "^1.0.0",
     "@sveltejs/adapter-auto": "^2.0.0",

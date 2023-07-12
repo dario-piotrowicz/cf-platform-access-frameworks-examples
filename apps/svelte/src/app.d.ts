@@ -4,14 +4,18 @@ declare global {
 	namespace App {
         interface Platform {
           env: {
-            COUNTER: DurableObjectNamespace;
+            MY_KV: KVNamespace;
           };
           context: {
             waitUntil(promise: Promise<any>): void;
           };
           caches: CacheStorage & { default: Cache }
         }
-    }
+      }
+
+      export interface Request {
+        cf: IncomingRequestCfProperties;
+      }
 }
 
 export {};
