@@ -2,16 +2,17 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "NITRO_PRESET=cloudflare-pages nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "pages:dev": "wrangler pages dev --compatibility-date=2023-07-12 --proxy 3000 -- npm run dev",
+    "pages:dev": "wrangler pages dev ./dist --compatibility-date=2023-07-12 --kv MY_KV",
     "pages:deploy": "NODE_VERSION=17 npm run generate && wrangler pages deploy ./dist"
   },
   "devDependencies": {
     "nuxt": "^3.4.0",
-    "wrangler": "^3.2.0"
+    "wrangler": "^3.2.0",
+    "@cloudflare/workers-types": "4.20230710.0"
   }
 }
