@@ -2652,8 +2652,17 @@ const $$server_module0$1 = server$.createHandler(async function $$serverHandler0
   request,
   env
 }) {
+  const myKv = env.MY_KV;
+  const requestCf = request.cf;
+  const allItems = await myKv.list();
+  const result = {
+    allItems,
+    requestCf,
+    // NOTE: there currently isn't a way to access ctx
+    typeOfWaitUntil: undefined
+  };
   return {
-    result: JSON.stringify(Object.keys(env))
+    result: JSON.stringify(result)
   };
 }, "/_m/0dbe216f23/routeData", true);
 server$.registerHandler("/_m/0dbe216f23/routeData", $$server_module0$1);
@@ -2673,8 +2682,17 @@ const $$server_module0 = server$.createHandler(async function $$serverHandler0(_
   request,
   env
 }) {
+  const myKv = env.MY_KV;
+  const requestCf = request.cf;
+  const allItems = await myKv.list();
+  const result = {
+    allItems,
+    requestCf,
+    // NOTE: there currently isn't a way to access ctx
+    typeOfWaitUntil: undefined
+  };
   return {
-    result: JSON.stringify(Object.keys(env))
+    result: JSON.stringify(result)
   };
 }, "/_m/0dbe216f23/routeData", true);
 server$.registerHandler("/_m/0dbe216f23/routeData", $$server_module0);
